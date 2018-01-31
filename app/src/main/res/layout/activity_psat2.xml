@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="nstar.usna.edu.nstar_v11.PSAT2">
+
+    <TextView
+        android:id="@+id/header2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/psat2Header"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/buttonDstatus"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonTempb"
+        android:layout_alignBottom="@+id/buttonTempb"
+        android:layout_alignStart="@+id/buttonTempzn"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/dstatus" />
+
+    <Button
+        android:id="@+id/buttonTempb"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonTempz"
+        android:layout_below="@+id/buttonTempz"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/tempb" />
+
+    <Button
+        android:id="@+id/buttonTempz"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonTempzn"
+        android:layout_alignBottom="@+id/buttonTempzn"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:layout_toStartOf="@+id/buttonTempzn"
+        android:background="@color/white"
+        android:text="@string/tempzp" />
+
+    <Button
+        android:id="@+id/buttonTempzn"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBusc"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:layout_toEndOf="@+id/buttonCount"
+        android:background="@color/white"
+        android:text="@string/tempzn" />
+
+    <Button
+        android:id="@+id/buttonBusc"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonBusv"
+        android:layout_alignBottom="@+id/buttonBusv"
+        android:layout_alignStart="@+id/buttonTempzn"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/busc"
+        android:textColor="@color/green" />
+
+    <Button
+        android:id="@+id/buttonBusv"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonPath"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:layout_toStartOf="@+id/buttonBusc"
+        android:background="@color/white"
+        android:text="@string/busv"
+        android:textColor="@color/green" />
+
+    <Button
+        android:id="@+id/buttonPath"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonTLMCount"
+        android:layout_alignBottom="@+id/buttonTLMCount"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:layout_toStartOf="@+id/buttonTLMCount"
+        android:background="@color/white"
+        android:text="@string/path" />
+
+    <Button
+        android:id="@+id/buttonTLMCount"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonHeader"
+        android:layout_below="@+id/buttonHeader"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/tlmCount" />
+
+    <Button
+        android:id="@+id/buttonHeader"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonCount"
+        android:layout_alignBottom="@+id/buttonCount"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:layout_toEndOf="@+id/buttonCount"
+        android:background="@color/white"
+        android:text="@string/header" />
+
+    <Button
+        android:id="@+id/buttonCount"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button27"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/count" />
+
+    <Button
+        android:id="@+id/button27"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/header2"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/buttonTime"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button27"
+        android:layout_alignBottom="@+id/button27"
+        android:layout_alignStart="@+id/buttonHeader"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/time" />
+
+    <Button
+        android:id="@+id/buttonSec"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button27"
+        android:layout_alignBottom="@+id/button27"
+        android:layout_alignStart="@+id/button27"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginVertical="5dp"
+        android:background="@color/white"
+        android:text="@string/seconds" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/header9"
+        android:layout_alignBottom="@+id/header9"
+        android:layout_alignEnd="@+id/buttonDstatus"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/tdate"
+        android:textColor="@color/red2"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/header9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonTempb"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/downlink"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/buttonInfo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginVertical="2dp"
+        android:background="@color/grey"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/editInfo"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>
