@@ -34,11 +34,6 @@ public class Login extends AppCompatActivity {
         final EditText textPass = (EditText) findViewById(R.id.textPass);
         final Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
-        /*
-        ConnectionClass connectionClass = new ConnectionClass();
-        Connection con = connectionClass.CONN();
-        */
-
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
