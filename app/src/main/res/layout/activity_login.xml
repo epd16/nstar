@@ -12,26 +12,44 @@
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.30"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/loginWelcome"
+        android:layout_weight="0.20"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/login_1"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="40sp" />
+        android:textSize="80sp" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/login_2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/loginBelow"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.10"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/welcome"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/loginBelow"
+        android:layout_weight="0.05"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/login_3"
         android:textAlignment="center"
         android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/loginBelow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/login_4"
+        android:textColor="@color/white"
+        android:gravity="bottom"/>
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/textUser"
@@ -40,12 +58,22 @@
         android:layout_weight="0.10"
         android:layout_margin="5dp"
         android:ems="10"
-        android:hint="@string/userHint"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textCursorDrawable="@null"
         app:backgroundTint="@color/white" />
+
+    <TextView
+        android:id="@+id/loginBelow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/login_5"
+        android:textColor="@color/white"
+        android:gravity="bottom" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/textPass"
@@ -54,7 +82,6 @@
         android:layout_weight="0.10"
         android:layout_margin="5dp"
         android:ems="10"
-        android:hint="@string/passHint"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"

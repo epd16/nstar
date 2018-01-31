@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">nstar</string>
-    <string name="loginWelcome">"Welcome to NSTAR"</string>
-    <string name="loginBelow">"Please Login Below"</string>
-    <string name="userHint">"Username"</string>
-    <string name="passHint">"Password"</string>
+    <string name="login_1">"NSTAR"</string>
+    <string name="login_2">"Mobile"</string>
+    <string name="login_3">"United States Naval Academy"</string>
+    <string name="login_4">"Username"</string>
+    <string name="login_5">"Password"</string>
     <string name="loginButton">"Login"</string>
     <string name="welcome">"NSTAR Mobile"</string>
     <string name="welcomeHelp">"Select A Satellite From Below"</string>
