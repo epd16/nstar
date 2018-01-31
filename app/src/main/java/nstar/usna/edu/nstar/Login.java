@@ -77,9 +77,6 @@ public class Login extends AppCompatActivity {
                 queue.add(loginRequest);
                 Log.i("DEBUG", "Added to queue");
 
-                /*
-                    These lines below bypass the authentication, remove for actual code
-                */
 
 
             }

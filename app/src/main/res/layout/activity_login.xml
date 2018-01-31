@@ -8,60 +8,64 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="0dp"
+        android:layout_weight="0.30"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/loginWelcome"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/loginBelow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/welcome"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/loginBelow"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+    <TextView
+        android:id="@+id/loginBelow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/welcome"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/loginBelow"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/loginWelcome"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-    </RelativeLayout>
-
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/textUser"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/userHint"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:textCursorDrawable="@null"
+        app:backgroundTint="@color/white" />
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:id="@+id/textPass"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:layout_margin="5dp"
         android:ems="10"
         android:hint="@string/passHint"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:textCursorDrawable="@null"
+        app:backgroundTint="@color/white" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
         android:background="@drawable/button_default"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/loginButton"
