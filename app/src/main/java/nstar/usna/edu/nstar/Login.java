@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -19,13 +21,14 @@ import org.json.JSONObject;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
-public class Login extends Activity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         final EditText textUser = (EditText) findViewById(R.id.textUser);
         final EditText textPass = (EditText) findViewById(R.id.textPass);

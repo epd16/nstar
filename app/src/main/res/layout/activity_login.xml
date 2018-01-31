@@ -62,7 +62,7 @@
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/button_default"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/loginButton"
         android:textSize="20sp" />
