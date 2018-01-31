@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NSTAR_v1.1</string>
+    <string name="app_name">nstar</string>
     <string name="loginWelcome">"Welcome to NSTAR"</string>
     <string name="loginBelow">"Please Login Below"</string>
     <string name="userHint">"Username"</string>

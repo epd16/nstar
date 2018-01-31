@@ -1,4 +1,4 @@
-package nstar.usna.edu.nstar_v11;
+package nstar.usna.edu.nstar;
 
 import android.annotation.SuppressLint;
 import android.os.StrictMode;

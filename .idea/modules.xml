@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NSTAR_v11.iml" filepath="$PROJECT_DIR$/NSTAR_v11.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nstar.iml" filepath="$PROJECT_DIR$/nstar.iml" />
     </modules>
   </component>
 </project>

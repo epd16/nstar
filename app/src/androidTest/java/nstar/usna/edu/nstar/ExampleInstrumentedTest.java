@@ -1,4 +1,4 @@
-package nstar.usna.edu.nstar_v11;
+package nstar.usna.edu.nstar;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

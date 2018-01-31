@@ -1,10 +1,9 @@
-package nstar.usna.edu.nstar_v11;
+package nstar.usna.edu.nstar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +16,6 @@ import com.android.volley.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 

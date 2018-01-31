@@ -1,9 +1,7 @@
-package nstar.usna.edu.nstar_v11;
+package nstar.usna.edu.nstar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
