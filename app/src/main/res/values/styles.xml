@@ -15,13 +15,12 @@
         <item name="android:gravity">top</item>
     </style>
 
-    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance">
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/prox_nova_thin</item>
     </style>
 
 </resources>
