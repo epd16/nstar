@@ -20,23 +20,6 @@ public class PacketSelector extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        // Configure Number Pickers
-        NumberPicker npDay = findViewById(R.id.np_day);
-        NumberPicker npMonth = findViewById(R.id.np_month);
-        NumberPicker npYear = findViewById(R.id.np_year);
-
-        npDay.setMinValue(1);
-        npMonth.setMinValue(1);
-        npYear.setMinValue(2016);
-
-        npDay.setMaxValue(31);
-        npMonth.setMaxValue(12);
-        npYear.setMaxValue(2018);
-
-        npDay.setWrapSelectorWheel(true);
-        npMonth.setWrapSelectorWheel(true);
-        npYear.setWrapSelectorWheel(true);
-
         Button buttonHome = findViewById(R.id.home_button);
 
         buttonHome.setOnClickListener(new View.OnClickListener() {

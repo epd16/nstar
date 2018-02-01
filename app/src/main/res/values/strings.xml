@@ -13,7 +13,7 @@
     <string name="ua_4">"User Information &amp; Limits"</string>
     <string name="ua_5">"Log Out"</string>
 
-    <string name="ps_1">Select Telemetry Packet</string>
+    <string name="ps_1">Select Packet Date</string>
 
     <string name="psat2Header">"Telemetry for PSAT-2"</string>
     <string name="downlink">"Packet Date"</string>

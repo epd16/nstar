@@ -12,7 +12,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.10"
+        android:layout_weight="0.07"
         android:fontFamily="@font/prox_nova_thin"
         android:text="@string/ps_1"
         android:textAlignment="center"
@@ -20,77 +20,19 @@
         android:textSize="30sp"
         android:gravity="center" />
 
-    <LinearLayout
+
+    <CalendarView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.05"
-        android:orientation="horizontal">
+        android:layout_weight="0.45"
+        android:theme="@style/CalenderViewCustom"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:weekDayTextAppearance="@null" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:gravity="center"
-            android:text="Month"
-            android:textColor="@color/white"
-            android:fontFamily="@font/prox_nova_thin" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:gravity="center"
-            android:text="Day"
-            android:textColor="@color/white"
-            android:fontFamily="@font/prox_nova_thin" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:gravity="center"
-            android:text="Year"
-            android:textColor="@color/white"
-            android:fontFamily="@font/prox_nova_thin" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.40"
-        android:orientation="horizontal">
-
-        <NumberPicker
-            android:id="@+id/np_month"
-            android:theme="@style/NumberPickerTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:textColor="@color/white">
-        </NumberPicker>
-
-        <NumberPicker
-            android:id="@+id/np_day"
-            android:theme="@style/NumberPickerTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:textColor="@color/white">
-        </NumberPicker>
-
-        <NumberPicker
-            android:id="@+id/np_year"
-            android:theme="@style/NumberPickerTheme"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33"
-            android:textColor="@color/white">
-        </NumberPicker>
-
-    </LinearLayout>
-
+        android:layout_weight="0.03" />
 
     <Button
         android:id="@+id/buttonPSAT1"
