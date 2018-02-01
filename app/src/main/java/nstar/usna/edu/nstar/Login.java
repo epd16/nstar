@@ -12,12 +12,16 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -29,6 +33,14 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        // set the date
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat curDate = new SimpleDateFormat("MM-dd-yyyy");
+        String dateString = curDate.format(c.getTime());
+        TextView dateText = (TextView) findViewById(R.id.login_3);
+        dateText.setText(dateString);
+
 
         final EditText textUser = (EditText) findViewById(R.id.textUser);
         final EditText textPass = (EditText) findViewById(R.id.textPass);

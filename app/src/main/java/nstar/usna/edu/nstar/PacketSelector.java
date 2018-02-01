@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.NumberPicker;
 
+import java.util.Calendar;
+
 public class PacketSelector extends AppCompatActivity {
 
     @Override
@@ -25,6 +27,7 @@ public class PacketSelector extends AppCompatActivity {
 
         // Calendar view declaration
         final CalendarView calView = findViewById(R.id.cal_view);
+        final Calendar cal = Calendar.getInstance();
 
         // Button declarations
         final Button buttonSelDate = findViewById(R.id.select_date_button);
@@ -36,7 +39,17 @@ public class PacketSelector extends AppCompatActivity {
         buttonYesterday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calView.setDate(calView.getDate());
+                cal.add(Calendar.DATE, -1); // subtract one day
+                calView.setDate(cal.getTimeInMillis());
+                cal.add(Calendar.DATE, 1); // add it back
+            }
+        });
+
+        // yesterdayButton button is selected
+        buttonToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calView.setDate(cal.getTimeInMillis());
             }
         });
 
@@ -45,8 +58,8 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 month = month + 1;
-                buttonSelDate.setTextColor(getResources().getColor(R.color.black));
-                buttonSelDate.setText(month+ "/" + day + "/" + year);
+                buttonSelDate.setTextColor(getResources().getColor(R.color.green));
+                buttonSelDate.setText(month+ "-" + day + "-" + year);
             }
         });
 
