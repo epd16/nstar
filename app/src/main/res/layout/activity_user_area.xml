@@ -14,12 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/welcome"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_1"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,61 +33,66 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
-        android:layout_marginVertical="2dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="PSAT-1"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_2"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:background="@drawable/button_default"/>
+        android:textStyle="bold"
+        android:background="@drawable/button_default"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
 
     <Button
         android:id="@+id/buttonPSAT2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
-        android:layout_marginVertical="2dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="PSAT-2"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_3"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:background="@drawable/button_default"/>
+        android:textStyle="bold"
+        android:background="@drawable/button_default"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp"/>
 
     <Button
         android:id="@+id/buttonInfo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
-        android:layout_marginVertical="2dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/editInfo"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_4"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:background="@drawable/button_options"/>
+        android:textStyle="bold"
+        android:background="@drawable/button_options"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
-        android:layout_marginVertical="2dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Log Out"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_5"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:background="@drawable/button_logout"/>
+        android:textStyle="bold"
+        android:background="@drawable/button_logout"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
 
     <TextView
         android:id="@+id/copyright"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.05"
-        android:layout_marginVertical="0dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="@font/prox_nova_thin"
         android:text="@string/copyright"
+        android:textStyle="italic"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:textSize="12sp"
+        android:gravity="center"/>
 
 </LinearLayout>

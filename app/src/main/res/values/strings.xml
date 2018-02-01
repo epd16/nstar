@@ -6,13 +6,15 @@
     <string name="login_4">"Username"</string>
     <string name="login_5">"Password"</string>
     <string name="loginButton">"Login"</string>
-    <string name="welcome">"NSTAR Mobile"</string>
-    <string name="welcomeHelp">"Select A Satellite From Below"</string>
-    <string name="editInfo">"User Information"</string>
-    <string name="psat2Header">"Telemetry for PSAT-2"</string>
-    <string name="downlink">"Last Telemetry Downlink:"</string>
-    <string name="tdate">"25JAN2018 07:54:23"</string>
 
+    <string name="ua_1">"NSTAR Mobile"</string>
+    <string name="ua_2">"PSAT-1"</string>
+    <string name="ua_3">"PSAT-2"</string>
+    <string name="ua_4">"User Information"</string>
+    <string name="ua_5">"Log Out"</string>
+
+    <string name="psat2Header">"Telemetry for PSAT-2"</string>
+    <string name="downlink">"Packet Date"</string>
     <string name="seconds">"REC_SECONDS</string>
     <string name="time">"REC_TIME</string>
     <string name="count">REC_COUNT</string>
@@ -25,9 +27,7 @@
     <string name="tempzn">TEMP_ZN</string>
     <string name="tempb">BAT_TEMP</string>
     <string name="dstatus">DIGI_STATUS</string>
-
-
-
+    <string name="tdate">"25JAN2018 07:54:23"</string>
 
     <string name="copyright">"MIDN Edward Decker and MIDN Daniel Lloyd, USNA 2018"</string>
 
