@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nstar.usna.edu.nstar.UserArea"
+    tools:context="nstar.usna.edu.nstar.PacketSelector"
     android:background="@color/black"
     android:orientation="vertical">
 
@@ -15,18 +14,83 @@
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_1"
+        android:text="@string/ps_1"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:gravity="center" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.45"
-        android:src="@drawable/nstar" />
+        android:layout_weight="0.05"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:gravity="center"
+            android:text="Month"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:gravity="center"
+            android:text="Day"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:gravity="center"
+            android:text="Year"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.40"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/np_month"
+            android:theme="@style/NumberPickerTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:textColor="@color/white">
+        </NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/np_day"
+            android:theme="@style/NumberPickerTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:textColor="@color/white">
+        </NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/np_year"
+            android:theme="@style/NumberPickerTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:textColor="@color/white">
+        </NumberPicker>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/buttonPSAT1"
@@ -34,7 +98,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_2"
+        android:text="Select Date"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -48,7 +112,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_3"
+        android:text="Today"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -62,25 +126,25 @@
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_4"
+        android:text="Most Recent"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/button_options"
+        android:textColor="@color/black"
+        android:background="@drawable/button_default"
         android:layout_marginTop="0.5dp"
         android:layout_marginBottom="0.5dp" />
 
     <Button
-        android:id="@+id/buttonLogout"
+        android:id="@+id/home_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_5"
+        android:text="Back"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:background="@drawable/button_logout"
+        android:background="@drawable/button_options"
         android:layout_marginTop="0.5dp"
         android:layout_marginBottom="0.5dp" />
 
@@ -96,5 +160,6 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:gravity="center"/>
+
 
 </LinearLayout>

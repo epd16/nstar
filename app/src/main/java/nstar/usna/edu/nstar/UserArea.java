@@ -18,10 +18,10 @@ public class UserArea extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        final Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
-        final Button buttonOptions = (Button) findViewById(R.id.buttonInfo);
-        final Button buttonP1 = (Button) findViewById(R.id.buttonPSAT1);
-        final Button buttonP2 = (Button) findViewById(R.id.buttonPSAT2);
+        Button buttonLogout = findViewById(R.id.buttonLogout);
+        Button buttonOptions = findViewById(R.id.buttonInfo);
+        Button buttonP1 = findViewById(R.id.buttonPSAT1);
+        Button buttonP2 = findViewById(R.id.buttonPSAT2);
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class UserArea extends AppCompatActivity {
         buttonP2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserArea.this, PSAT2.class);
+                Intent intent = new Intent(UserArea.this, PacketSelector.class);
                 UserArea.this.startActivity(intent);
             }
         });

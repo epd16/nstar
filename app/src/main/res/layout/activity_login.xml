@@ -74,6 +74,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        android:fontFamily="@font/prox_nova_thin"
         app:backgroundTint="@color/white" />
 
     <TextView
@@ -98,6 +100,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textCursorDrawable="@null"
+        android:textSize="20sp"
+        android:fontFamily="@font/prox_nova_thin"
         app:backgroundTint="@color/white" />
 
     <Button
@@ -109,7 +113,8 @@
         android:fontFamily="@font/prox_nova_thin"
         android:text="@string/loginButton"
         android:textStyle="bold"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
 
 
 </LinearLayout>

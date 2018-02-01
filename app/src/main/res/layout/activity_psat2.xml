@@ -224,9 +224,10 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/home_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.14"
+        android:layout_weight="0.10"
         android:background="@drawable/button_options"
         android:layout_marginTop="1.0dp"
         android:text="Home"
