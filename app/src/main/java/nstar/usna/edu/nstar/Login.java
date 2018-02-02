@@ -3,6 +3,7 @@ package nstar.usna.edu.nstar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -36,7 +37,7 @@ public class Login extends AppCompatActivity {
 
         // set the date
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat curDate = new SimpleDateFormat("MM-dd-yyyy");
+        final SimpleDateFormat curDate = new SimpleDateFormat("MM-dd-yyyy");
         String dateString = curDate.format(c.getTime());
         TextView dateText = (TextView) findViewById(R.id.login_3);
         dateText.setText(dateString);
@@ -64,7 +65,9 @@ public class Login extends AppCompatActivity {
 
                             if(success) {
                                 Intent intent = new Intent(Login.this, UserArea.class);
+                                intent.putExtra("curUser", username);
                                 Login.this.startActivity(intent);
+
                             }else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                                 builder.setMessage("Login Failed")

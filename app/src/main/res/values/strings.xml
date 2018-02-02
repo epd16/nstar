@@ -1,4 +1,5 @@
 <resources>
+    <string name="current_user"></string>
     <string name="app_name">nstar</string>
     <string name="login_1">"NSTAR"</string>
     <string name="login_2">"Mobile"</string>

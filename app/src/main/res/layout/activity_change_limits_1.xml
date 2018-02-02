@@ -1,58 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nstar.usna.edu.nstar.UserArea"
+    tools:context="nstar.usna.edu.nstar.PacketSelector"
     android:background="@color/black"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/optionsText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_1"
+        android:text="Change Limits"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:gravity="center" />
 
-    <TextView
-        android:id="@+id/welcomeName"
+    <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.05"
+        android:layout_weight="0.15" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15" />
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text=""
+        android:text="Select a Satellite to Change its Limits"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:gravity="top" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.45"
-        android:src="@drawable/nstar" />
+        android:textSize="15sp"
+        android:gravity="center" />
 
     <Button
-    android:id="@+id/buttonPSAT1"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.10"
-    android:fontFamily="@font/prox_nova_thin"
-    android:text="@string/ua_2"
-    android:textSize="20sp"
-    android:textStyle="bold"
-    android:textColor="@color/black"
-    android:background="@drawable/button_default"
-    android:layout_marginTop="0.5dp"
-    android:layout_marginBottom="0.5dp" />
+        android:id="@+id/buttonPSAT1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/button_default"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
 
     <Button
         android:id="@+id/buttonPSAT2"
@@ -67,14 +76,13 @@
         android:background="@drawable/button_default"
         android:layout_marginTop="0.5dp"
         android:layout_marginBottom="0.5dp"/>
-
     <Button
         android:id="@+id/buttonInfo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_4"
+        android:text="Back"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -82,18 +90,7 @@
         android:layout_marginTop="0.5dp"
         android:layout_marginBottom="0.5dp" />
 
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.10"
-        android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/ua_5"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/button_logout"
-        android:layout_marginTop="0.5dp"
-        android:layout_marginBottom="0.5dp" />
+
 
 </LinearLayout>
+

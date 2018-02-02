@@ -34,7 +34,7 @@
         android:id="@+id/select_above"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.05"
+        android:layout_weight="0.10"
         android:fontFamily="@font/prox_nova_thin"
         android:text="Select a date from above, then press the date below"
         android:textStyle="italic"
@@ -111,18 +111,7 @@
         android:layout_marginTop="0.5dp"
         android:layout_marginBottom="0.5dp" />
 
-    <TextView
-        android:id="@+id/copyright"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.05"
-        android:fontFamily="@font/prox_nova_thin"
-        android:text="@string/copyright"
-        android:textStyle="italic"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:gravity="center"/>
+
 
 
 </LinearLayout>

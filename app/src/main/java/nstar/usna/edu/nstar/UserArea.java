@@ -1,13 +1,12 @@
 package nstar.usna.edu.nstar;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class UserArea extends AppCompatActivity {
 
@@ -17,6 +16,13 @@ public class UserArea extends AppCompatActivity {
         setContentView(R.layout.activity_user_area);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        // get intent and username
+        // Will need later for user options
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("curUser");
+        TextView welcomeBanner = findViewById(R.id.welcomeName);
+        welcomeBanner.setText("Welcome " + username);
 
         Button buttonLogout = findViewById(R.id.buttonLogout);
         Button buttonOptions = findViewById(R.id.buttonInfo);
@@ -34,7 +40,7 @@ public class UserArea extends AppCompatActivity {
         buttonOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserArea.this, Options.class);
+                Intent intent = new Intent(UserArea.this, ChangeLimits1.class);
                 UserArea.this.startActivity(intent);
             }
         });

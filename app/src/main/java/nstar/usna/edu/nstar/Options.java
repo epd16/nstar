@@ -1,10 +1,13 @@
 package nstar.usna.edu.nstar;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
+import android.os.Bundle;
+
+/*
+ * TODO: get user class, send php request to fetch limits
+ * and then display said limits.
+ * ORDER = Options --> (Display or change button) --> Change Limits 1 --> Modify in database
+ */
 
 public class Options extends AppCompatActivity {
 
@@ -12,7 +15,7 @@ public class Options extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
+
     }
 }

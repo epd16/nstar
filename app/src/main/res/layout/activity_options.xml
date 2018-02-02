@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- TODO add precursor, change limits or view -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nstar.usna.edu.nstar.Options">
+    tools:context="nstar.usna.edu.nstar.UserArea"
+    android:background="@color/black"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <!-- TODO Finish layout  options menu -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/optionsText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.20"
+                android:fontFamily="@font/prox_nova_thin"
+                android:text="User Options"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:gravity="center" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.10"
+                    android:fontFamily="@font/prox_nova_thin"
+                    android:text="Username:"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:gravity="left|bottom" />
+
+                <TextView
+                    android:id="@+id/user_field"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.10"
+                    android:fontFamily="@font/prox_nova_thin"
+                    android:text="name"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:gravity="left|bottom" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/buttonPSAT2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/button_default"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp"/>
+
+    <Button
+        android:id="@+id/buttonInfo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_options"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="@string/ua_5"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_logout"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
+
+</LinearLayout>
