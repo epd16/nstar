@@ -17,15 +17,31 @@ public class ChangeLimits1 extends AppCompatActivity {
         actionBar.hide();
 
         // button declarations
-        final Button buttonPSAT1 = findViewById(R.id.buttonPSAT1);
-        final Button buttonPSAT2 = findViewById(R.id.buttonPSAT2);
         final Button buttonHome = findViewById(R.id.buttonInfo);
+        final Button buttonP1 = findViewById(R.id.buttonPSAT1);
+        final Button buttonP2 = findViewById(R.id.buttonPSAT2);
 
-        // Home button listener
+        // Back button listener
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChangeLimits1.this, UserArea.class);
+                Intent intent = new Intent(ChangeLimits1.this, ViewChange.class);
+                ChangeLimits1.this.startActivity(intent);
+            }
+        });
+
+        buttonP1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChangeLimits1.this, ChangeLimits2.class);
+                ChangeLimits1.this.startActivity(intent);
+            }
+        });
+
+        buttonP2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChangeLimits1.this, ChangeLimits2.class);
                 ChangeLimits1.this.startActivity(intent);
             }
         });

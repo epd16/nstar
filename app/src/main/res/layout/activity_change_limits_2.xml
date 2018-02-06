@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO add precursor, change limits or view -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nstar.usna.edu.nstar.UserArea"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <!-- TODO Finish layout  options menu -->
+    <TextView
+        android:id="@+id/optionsText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="User Options"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/optionsTextHelp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="PSAT-2"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="top|center" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Username:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/user_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="name"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Phone:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/phoneNumber_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="312-340-4300"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/busVoltage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Bus Voltage:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/busVOltage_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="volts"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/busCurrent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Bus Current:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/busCurrent_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="amps"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tempZP"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="ZP Temp:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tempZP_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="F"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tempZone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Zone Temp:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tempZone_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="F"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/batteryTemp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="Battery Temp:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:gravity="left|center"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/batteryTemp_field"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="F"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:gravity="right|center"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Save"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_options"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
+
+
+</LinearLayout>

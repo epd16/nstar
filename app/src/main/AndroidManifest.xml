@@ -23,7 +23,10 @@
         <activity android:name=".ChangeLimits1" />
         <activity android:name=".PacketSelector" />
         <activity android:name="nstar.usna.edu.nstar_v11.Options" />
-        <activity android:name=".Options"></activity>
+        <activity android:name=".ViewLimits" />
+        <activity android:name="nstar.usna.edu.nstar_v11.view_change" />
+        <activity android:name=".ViewChange" />
+        <activity android:name=".ChangeLimits2"></activity>
     </application>
 
 </manifest>

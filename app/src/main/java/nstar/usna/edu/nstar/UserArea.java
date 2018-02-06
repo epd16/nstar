@@ -40,7 +40,7 @@ public class UserArea extends AppCompatActivity {
         buttonOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserArea.this, ChangeLimits1.class);
+                Intent intent = new Intent(UserArea.this, ViewChange.class);
                 UserArea.this.startActivity(intent);
             }
         });
