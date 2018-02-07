@@ -22,7 +22,7 @@
     <string name="time">"REC_TIME</string>
     <string name="count">REC_COUNT</string>
     <string name="header">HEADER</string>
-    <string name="path">"2PATH"</string>
+    <string name="date">"DATE"</string>
     <string name="tlmCount">"TLM COUNT"</string>
     <string name="busv">BUS_VOLT</string>
     <string name="busc">"BUS_CUR</string>

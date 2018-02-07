@@ -107,12 +107,26 @@ public class PacketSelector extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             Log.i("DEBUG", "Awaiting response");
                             boolean success = jsonResponse.getBoolean("success");
-                            String Jresponse = jsonResponse.toString();
-                            Log.i("DEBUG", Jresponse);
+                            Log.i("DEBUG", jsonResponse.toString());
 
                             if(success) {
                                 Intent intent = new Intent(PacketSelector.this, PSAT2.class);
-                                intent.putExtra("curUser", date);
+
+                                // send the variables to the view screen
+                                intent.putExtra("date", jsonResponse.getString("date"));
+                                intent.putExtra("REC_SECONDS", jsonResponse.getString("REC_SECONDS"));
+                                intent.putExtra("REC_TIME", jsonResponse.getString("REC_TIME"));
+                                intent.putExtra("REC_COUNT", jsonResponse.getString("REC_COUNT"));
+                                intent.putExtra("HEADER", jsonResponse.getString("HEADER"));
+                                intent.putExtra("TLM_COUNT", jsonResponse.getString("TLM_COUNT"));
+                                intent.putExtra("BUS_VOLT", jsonResponse.getString("BUS_VOLT"));
+                                intent.putExtra("BUS_CUR", jsonResponse.getString("BUS_CUR"));
+                                intent.putExtra("TEMP_ZP", jsonResponse.getString("TEMP_ZP"));
+                                intent.putExtra("TEMP_ZN", jsonResponse.getString("TEMP_ZN"));
+                                intent.putExtra("BAT_TEMP", jsonResponse.getString("BAT_TEMP"));
+                                intent.putExtra("DIGI_STATUS", jsonResponse.getString("DIGI_STATUS"));
+
+                                // start the intent
                                 PacketSelector.this.startActivity(intent);
 
                             }else {

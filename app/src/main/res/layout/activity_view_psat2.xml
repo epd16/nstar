@@ -28,14 +28,50 @@
         android:text="@string/downlink"
         android:textColor="@color/white"
         android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="15sp" />
+        android:gravity="center|top"
+        android:textSize="20sp" />
+
+
+    <LinearLayout
+        android:id="@+id/labels2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rec_sec_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/seconds"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/rec_time_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/time"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/row1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.09"
         android:orientation="horizontal">
 
         <Button
@@ -43,7 +79,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -55,7 +92,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -64,10 +102,45 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/labels1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rec_count_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/count"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/header_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/header"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.09"
         android:orientation="horizontal">
 
         <Button
@@ -75,7 +148,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -87,7 +161,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -96,18 +171,54 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row3"
+        android:id="@+id/labels3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.03"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/two_path"
+        <TextView
+            android:id="@+id/date_lab"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text="@string/date"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tlm_count_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/tlmCount"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.09"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -119,7 +230,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -128,10 +240,45 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/labels4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bus_volt_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/busv"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/bus_cur_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/busc"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/row4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.09"
         android:orientation="horizontal">
 
         <Button
@@ -139,7 +286,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -147,11 +295,12 @@
             android:layout_marginEnd="1.0dp" />
 
         <Button
-            android:id="@+id/bus_count"
+            android:id="@+id/bus_cur"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -160,10 +309,45 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/labels5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/temp_zp_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/tempzp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/temp_zn_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/tempzn"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/row5"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.09"
         android:orientation="horizontal">
 
         <Button
@@ -171,7 +355,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -183,7 +368,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -192,10 +378,45 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/labels6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.03"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bat_temp_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/tempb"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginEnd="1.0dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/digi_status_lab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:text="@string/dstatus"
+            android:textColor="@color/white"
+            android:fontFamily="@font/prox_nova_thin"
+            android:layout_marginTop="1.0dp"
+            android:layout_marginBottom="1.0dp"
+            android:layout_marginStart="1.0dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/row6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.12"
+        android:layout_weight="0.09"
         android:orientation="horizontal">
 
         <Button
@@ -203,7 +424,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
@@ -215,7 +437,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="@string/seconds"
+            android:text=""
+            android:textColor="@color/black"
             android:fontFamily="@font/prox_nova_thin"
             android:background="@drawable/button_default"
             android:layout_marginTop="1.0dp"
