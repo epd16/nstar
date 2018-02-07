@@ -32,7 +32,7 @@ public class PacketSelector extends AppCompatActivity {
 
     // class variable to store the date
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-    private String date;
+    private String date, displayDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +78,7 @@ public class PacketSelector extends AppCompatActivity {
                 month = month + 1;
                 buttonSelDate.setTextColor(getResources().getColor(R.color.green));
                 buttonSelDate.setText(month+ "-" + day + "-" + year);
+                displayDate = month+ "-" + day + "-" + year;
                 date = dateFormat.format(calView.getDate());
                 Log.i("TESTING", date);
             }
@@ -125,6 +126,7 @@ public class PacketSelector extends AppCompatActivity {
                                 intent.putExtra("TEMP_ZN", jsonResponse.getString("TEMP_ZN"));
                                 intent.putExtra("BAT_TEMP", jsonResponse.getString("BAT_TEMP"));
                                 intent.putExtra("DIGI_STATUS", jsonResponse.getString("DIGI_STATUS"));
+                                intent.putExtra("displayDate", displayDate);
 
                                 // start the intent
                                 PacketSelector.this.startActivity(intent);

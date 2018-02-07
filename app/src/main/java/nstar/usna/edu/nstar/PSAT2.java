@@ -37,6 +37,11 @@ public class PSAT2 extends AppCompatActivity {
         double tempBat = Double.parseDouble(intent.getStringExtra("BAT_TEMP"));
         String digiStatus = intent.getStringExtra("DIGI_STATUS");
 
+        // set date as header
+        String displayDate = intent.getStringExtra("displayDate");
+        TextView dateView = findViewById(R.id.psat2_2);
+        dateView.setText("Packet Date: " + displayDate);
+
 
 
         // put all values in an array for field population
