@@ -59,7 +59,6 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             Log.i("DEBUG", "Awaiting response");
                             boolean success = jsonResponse.getBoolean("success");
-
                             String Jresponse = jsonResponse.toString();
                             Log.i("DEBUG", Jresponse);
 
@@ -83,17 +82,10 @@ public class Login extends AppCompatActivity {
                     }
                 };
 
-                buttonLogin.setBackgroundColor(Color.parseColor("#e0e2e5"));
+                //buttonLogin.setBackgroundColor(Color.parseColor("#e0e2e5"));
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
-                Log.i("DEBUG", "Generated the request.." + username + " " + password );
-                Log.i("DEBUG", "Generated the request...adding to queue");
                 RequestQueue queue = newRequestQueue(Login.this);
-                Log.i("DEBUG", "Queue created ...adding");
                 queue.add(loginRequest);
-                Log.i("DEBUG", "Added to queue");
-
-
-
             }
         });
 

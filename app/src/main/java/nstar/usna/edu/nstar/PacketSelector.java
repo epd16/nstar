@@ -1,6 +1,7 @@
 package nstar.usna.edu.nstar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,15 +9,30 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.NumberPicker;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 public class PacketSelector extends AppCompatActivity {
+
+    // class variable to store the date
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +40,8 @@ public class PacketSelector extends AppCompatActivity {
         setContentView(R.layout.activity_packet_selector);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+
 
         // Calendar view declaration
         final CalendarView calView = findViewById(R.id.cal_view);
@@ -35,7 +53,7 @@ public class PacketSelector extends AppCompatActivity {
         final Button buttonToday = findViewById(R.id.today_button);
         final Button buttonYesterday = findViewById(R.id.yesterday_button);
 
-        // yesterdayButton button is selected
+        // yesterdayButton is selected
         buttonYesterday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +63,7 @@ public class PacketSelector extends AppCompatActivity {
             }
         });
 
-        // yesterdayButton button is selected
+        // todayButton is selected
         buttonToday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +78,8 @@ public class PacketSelector extends AppCompatActivity {
                 month = month + 1;
                 buttonSelDate.setTextColor(getResources().getColor(R.color.green));
                 buttonSelDate.setText(month+ "-" + day + "-" + year);
+                date = dateFormat.format(calView.getDate());
+                Log.i("TESTING", date);
             }
         });
 
@@ -74,8 +94,48 @@ public class PacketSelector extends AppCompatActivity {
         });
 
 
+        // Date button that sends a request based on the date selected
+        buttonSelDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //final String username = textUser.getText().toString();
+                final String requestDate = date;
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            Log.i("DEBUG", "Awaiting response");
+                            boolean success = jsonResponse.getBoolean("success");
+                            String Jresponse = jsonResponse.toString();
+                            Log.i("DEBUG", Jresponse);
 
+                            if(success) {
+                                Intent intent = new Intent(PacketSelector.this, PSAT2.class);
+                                intent.putExtra("curUser", date);
+                                PacketSelector.this.startActivity(intent);
 
+                            }else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(PacketSelector.this);
+                                builder.setMessage("No Packets Available for " + date)
+                                        .setNegativeButton("Try Again", null)
+                                        .create()
+                                        .show();
+                                Log.i("DEBUG", "No packets available");
+                            }
 
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                PacketRequest packetRequest = new PacketRequest(date, responseListener);
+                Log.i("DEBUG", "Sending packet with" + packetRequest.params);
+                RequestQueue queue = newRequestQueue(PacketSelector.this);
+                queue.add(packetRequest);
+            }
+        });
+        // end of request field
     }
 }
