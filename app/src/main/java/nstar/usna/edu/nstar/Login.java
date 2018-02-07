@@ -57,14 +57,12 @@ public class Login extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            Log.i("DEBUG", "Awaiting response");
                             boolean success = jsonResponse.getBoolean("success");
-                            String Jresponse = jsonResponse.toString();
-                            Log.i("DEBUG", Jresponse);
+                            Log.i("DEBUG", jsonResponse.toString());
 
                             if(success) {
                                 Intent intent = new Intent(Login.this, UserArea.class);
-                                intent.putExtra("curUser", username);
+                                intent.putExtra("curUser", jsonResponse.getString("username"));
                                 Login.this.startActivity(intent);
 
                             }else {
