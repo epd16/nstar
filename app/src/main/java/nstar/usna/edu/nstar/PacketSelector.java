@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,6 +33,7 @@ public class PacketSelector extends AppCompatActivity {
 
     // class variable to store the date
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    final SimpleDateFormat dateFormatAlt = new SimpleDateFormat("MM-dd-yyyy");
     private String date, displayDate;
 
     @Override
@@ -41,6 +43,10 @@ public class PacketSelector extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        // get intent and hold onto variable
+        Intent intent = getIntent();
+        final String[] userInfo = intent.getStringArrayExtra("userInfo");
+        Log.i("DEBUG2", Arrays.toString(userInfo));
 
 
         // Calendar view declaration
@@ -52,6 +58,11 @@ public class PacketSelector extends AppCompatActivity {
         final Button buttonHome = findViewById(R.id.home_button);
         final Button buttonToday = findViewById(R.id.today_button);
         final Button buttonYesterday = findViewById(R.id.yesterday_button);
+
+        // get current date and time for initialization of buttonSelDate
+        String dateString = dateFormatAlt.format(cal.getTime());
+        buttonSelDate.setTextColor(getResources().getColor(R.color.green));
+        buttonSelDate.setText(dateString);
 
         // yesterdayButton is selected
         buttonYesterday.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +87,9 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
                 month = month + 1;
-                buttonSelDate.setTextColor(getResources().getColor(R.color.green));
-                buttonSelDate.setText(month+ "-" + day + "-" + year);
-                displayDate = month+ "-" + day + "-" + year;
                 date = dateFormat.format(calView.getDate());
+                displayDate = dateFormatAlt.format(calView.getDate());
+                buttonSelDate.setText(displayDate);
                 Log.i("TESTING", date);
             }
         });
@@ -90,6 +100,7 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PacketSelector.this, UserArea.class);
+                intent.putExtra("curUser", userInfo[0]);
                 PacketSelector.this.startActivity(intent);
             }
         });
@@ -128,12 +139,15 @@ public class PacketSelector extends AppCompatActivity {
                                 intent.putExtra("DIGI_STATUS", jsonResponse.getString("DIGI_STATUS"));
                                 intent.putExtra("displayDate", displayDate);
 
+                                // userInfo Array
+                                intent.putExtra("userInfo", userInfo);
+
                                 // start the intent
                                 PacketSelector.this.startActivity(intent);
 
                             }else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(PacketSelector.this);
-                                builder.setMessage("No Packets Available for " + date)
+                                builder.setMessage("No Packets Available for " + displayDate)
                                         .setNegativeButton("Try Again", null)
                                         .create()
                                         .show();

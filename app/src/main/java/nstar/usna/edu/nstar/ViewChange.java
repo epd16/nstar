@@ -20,11 +20,17 @@ public class ViewChange extends AppCompatActivity {
         final Button buttonView = findViewById(R.id.buttonView);
         final Button buttonChange = findViewById(R.id.buttonChange);
 
+        // get intent and hold onto variable
+        Intent intent = getIntent();
+        final String[] userInfo = intent.getStringArrayExtra("userInfo");
+
         // Back button listener
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewChange.this, UserArea.class);
+                intent.putExtra("userInfo", userInfo);
+                intent.putExtra("curUser", userInfo[0]);
                 ViewChange.this.startActivity(intent);
             }
         });
@@ -34,6 +40,8 @@ public class ViewChange extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewChange.this, ViewLimits.class);
+                // userInfo Array
+                intent.putExtra("userInfo", userInfo);
                 ViewChange.this.startActivity(intent);
             }
         });
@@ -43,6 +51,8 @@ public class ViewChange extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewChange.this, ChangeLimits1.class);
+                // userInfo Array
+                intent.putExtra("userInfo", userInfo);
                 ViewChange.this.startActivity(intent);
             }
         });

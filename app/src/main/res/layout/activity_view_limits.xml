@@ -29,7 +29,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.05"
         android:fontFamily="@font/prox_nova_thin"
-        android:text="PSAT-2"
+        android:text="PSAT-2 Upper Limits"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -84,7 +84,7 @@
             android:fontFamily="@font/prox_nova_thin"
             android:text="Phone:"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 
@@ -114,14 +114,14 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:fontFamily="@font/prox_nova_thin"
-            android:text="Bus Voltage:"
+            android:text="Bus Voltage (V) :"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 
         <TextView
-            android:id="@+id/busVOltage_field"
+            android:id="@+id/busVoltage_field"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.10"
@@ -147,9 +147,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:fontFamily="@font/prox_nova_thin"
-            android:text="Bus Current:"
+            android:text="Bus Current (A):"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 
@@ -179,9 +179,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:fontFamily="@font/prox_nova_thin"
-            android:text="ZP Temp:"
+            android:text="ZP Temp (C) :"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 
@@ -211,9 +211,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:fontFamily="@font/prox_nova_thin"
-            android:text="Zone Temp:"
+            android:text="Zone Temp (C) :"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 
@@ -243,9 +243,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:fontFamily="@font/prox_nova_thin"
-            android:text="Battery Temp:"
+            android:text="Battery Temp (C) :"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:gravity="left|center"
             android:layout_marginStart="10dp"/>
 

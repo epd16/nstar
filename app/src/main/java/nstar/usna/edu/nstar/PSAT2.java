@@ -1,6 +1,8 @@
 package nstar.usna.edu.nstar;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.Arrays;
 
 public class PSAT2 extends AppCompatActivity {
 
@@ -22,6 +26,7 @@ public class PSAT2 extends AppCompatActivity {
 
         // get intent to populate the values in the telemetry display
         Intent intent = getIntent();
+        String[] userInfo = intent.getStringArrayExtra("userInfo");
 
         // values from the JSON in PacketSelector
         String date = intent.getStringExtra("date");
@@ -60,6 +65,17 @@ public class PSAT2 extends AppCompatActivity {
         // populate the fields
         populateFields(values, fields);
 
+        // check against limits
+        Log.i("DEBUG2", Arrays.toString(userInfo));
+        Log.i("DEBUG", Arrays.toString(fields));
+        if (checkLimits(userInfo, fields) == true) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PSAT2.this);
+            builder.setMessage("Limits Alert: This packet contains out of limits telemetry!")
+                    .setNegativeButton("Ok", null)
+                    .create()
+                    .show();
+        }
+
         // set home button return
         Button buttonHome = findViewById(R.id.home_button);
         buttonHome.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +90,59 @@ public class PSAT2 extends AppCompatActivity {
 
     /*
      * populateFields: method to populate fields in the layout file
-     * @values:
+     * @values: the values from the JSON
+     * @fields: the actual fields to be populated
      */
     public void populateFields(String[] values, Button[] fields) {
         for(int i = 0; i < values.length; i++) {
             fields[i].setText(values[i]);
-            Log.i("DEBUG",  values[i]);
+            fields[i].setTextSize(20);
         }
     }
 
+    /*
+     * checkLimits: check the limits of the user against the telemetry for a given packet
+     * @userInfo: an array of limits corresponding to bus_v, bus_c, temp_zp, temp_zn and temp_bat ([0] = username)
+     * @fields: the fields to change the color of if out of limits
+     */
+    public boolean checkLimits(String[] userInfo, Button[] fields) {
+        boolean alert = false;
+        // bus_voltage limit
+        if(Double.parseDouble((String)fields[6].getText()) > Double.parseDouble((String)userInfo[1])) {
+            fields[6].setTextColor(getResources().getColor(R.color.red));
+            fields[6].setTextSize(25);
+            alert = true;
+        }
+
+        // bus_current limit
+        if(Double.parseDouble((String)fields[7].getText()) > Double.parseDouble((String)userInfo[2])) {
+            fields[7].setTextColor(getResources().getColor(R.color.red));
+            fields[7].setTextSize(25);
+            alert = true;
+        }
+
+        // temp_zp limit
+        if(Double.parseDouble((String)fields[8].getText()) > Double.parseDouble((String)userInfo[3])) {
+            fields[8].setTextColor(getResources().getColor(R.color.red));
+            fields[8].setTextSize(25);
+            alert = true;
+        }
+        // temp_zn limit
+        if(Double.parseDouble((String)fields[9].getText()) > Double.parseDouble((String)userInfo[4])) {
+            fields[9].setTextColor(getResources().getColor(R.color.red));
+            fields[9].setTextSize(25);
+            alert = true;
+        }
+
+        // temp_bat limit
+        if(Double.parseDouble((String)fields[10].getText()) > Double.parseDouble((String)userInfo[5])) {
+            fields[10].setTextColor(getResources().getColor(R.color.red));
+            fields[10].setTextSize(25);
+            alert = true;
+        }
+
+        return alert;
+
+    }
 
 }
