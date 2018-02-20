@@ -1,6 +1,7 @@
 package nstar.usna.edu.nstar;
 
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.telephony.gsm.SmsManager;
 
 import org.w3c.dom.Text;
 
@@ -26,12 +28,12 @@ public class PSAT2 extends AppCompatActivity {
 
         // get intent to populate the values in the telemetry display
         Intent intent = getIntent();
-        String[] userInfo = intent.getStringArrayExtra("userInfo");
+        final String[] userInfo = intent.getStringArrayExtra("userInfo");
 
         // values from the JSON in PacketSelector
         String date = intent.getStringExtra("date");
-        double recSeconds = Double.parseDouble(intent.getStringExtra("REC_SECONDS"));
         double recTime = Double.parseDouble(intent.getStringExtra("REC_TIME"));
+        double recSeconds = Double.parseDouble(intent.getStringExtra("REC_SECONDS"));
         double recCount = Double.parseDouble(intent.getStringExtra("REC_COUNT"));
         String header = intent.getStringExtra("HEADER");
         double tlmCount = Double.parseDouble(intent.getStringExtra("TLM_COUNT"));
@@ -74,6 +76,8 @@ public class PSAT2 extends AppCompatActivity {
                     .setNegativeButton("Ok", null)
                     .create()
                     .show();
+            android.telephony.SmsManager sms = android.telephony.SmsManager.getDefault();
+            sms.sendTextMessage("5556", null, "Telemetry Out of Limits", null, null);
         }
 
         // set home button return
@@ -82,6 +86,7 @@ public class PSAT2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PSAT2.this, UserArea.class);
+                intent.putExtra("curUser", userInfo[0]);
                 PSAT2.this.startActivity(intent);
             }
         });
@@ -108,34 +113,34 @@ public class PSAT2 extends AppCompatActivity {
     public boolean checkLimits(String[] userInfo, Button[] fields) {
         boolean alert = false;
         // bus_voltage limit
-        if(Double.parseDouble((String)fields[6].getText()) > Double.parseDouble((String)userInfo[1])) {
+        if(Double.parseDouble((String)fields[6].getText()) > Double.parseDouble((String)userInfo[2])) {
             fields[6].setTextColor(getResources().getColor(R.color.red));
             fields[6].setTextSize(25);
             alert = true;
         }
 
         // bus_current limit
-        if(Double.parseDouble((String)fields[7].getText()) > Double.parseDouble((String)userInfo[2])) {
+        if(Double.parseDouble((String)fields[7].getText()) > Double.parseDouble((String)userInfo[3])) {
             fields[7].setTextColor(getResources().getColor(R.color.red));
             fields[7].setTextSize(25);
             alert = true;
         }
 
         // temp_zp limit
-        if(Double.parseDouble((String)fields[8].getText()) > Double.parseDouble((String)userInfo[3])) {
+        if(Double.parseDouble((String)fields[8].getText()) > Double.parseDouble((String)userInfo[4])) {
             fields[8].setTextColor(getResources().getColor(R.color.red));
             fields[8].setTextSize(25);
             alert = true;
         }
         // temp_zn limit
-        if(Double.parseDouble((String)fields[9].getText()) > Double.parseDouble((String)userInfo[4])) {
+        if(Double.parseDouble((String)fields[9].getText()) > Double.parseDouble((String)userInfo[5])) {
             fields[9].setTextColor(getResources().getColor(R.color.red));
             fields[9].setTextSize(25);
             alert = true;
         }
 
         // temp_bat limit
-        if(Double.parseDouble((String)fields[10].getText()) > Double.parseDouble((String)userInfo[5])) {
+        if(Double.parseDouble((String)fields[10].getText()) > Double.parseDouble((String)userInfo[6])) {
             fields[10].setTextColor(getResources().getColor(R.color.red));
             fields[10].setTextSize(25);
             alert = true;

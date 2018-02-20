@@ -30,7 +30,7 @@ public class UserArea extends AppCompatActivity {
         actionBar.hide();
 
         // user info array to be passed between intents
-        final String[] userInfo = new String[6];
+        final String[] userInfo = new String[7];
 
         // get intent and username
         // Will need later for user options
@@ -98,11 +98,12 @@ public class UserArea extends AppCompatActivity {
                     if(success) {
                         // build an array to be passed around with the limits
                         userInfo[0] = requestUsername;
-                        userInfo[1] = jsonResponse.getString("BUS_VOLT_LIMIT");
-                        userInfo[2] = jsonResponse.getString("BUS_CUR_LIMIT");
-                        userInfo[3] = jsonResponse.getString("TEMP_ZP_LIMIT");
-                        userInfo[4] = jsonResponse.getString("TEMP_ZN_LIMIT");
-                        userInfo[5] = jsonResponse.getString("BAT_TEMP_LIMIT");
+                        userInfo[1] =jsonResponse.getString("number");
+                        userInfo[2] = jsonResponse.getString("BUS_VOLT_LIMIT");
+                        userInfo[3] = jsonResponse.getString("BUS_CUR_LIMIT");
+                        userInfo[4] = jsonResponse.getString("TEMP_ZP_LIMIT");
+                        userInfo[5] = jsonResponse.getString("TEMP_ZN_LIMIT");
+                        userInfo[6] = jsonResponse.getString("BAT_TEMP_LIMIT");
                         Log.i("DEBUG", Arrays.toString(userInfo));
 
                     }else {

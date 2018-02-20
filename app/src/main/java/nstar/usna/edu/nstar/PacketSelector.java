@@ -46,7 +46,7 @@ public class PacketSelector extends AppCompatActivity {
         // get intent and hold onto variable
         Intent intent = getIntent();
         final String[] userInfo = intent.getStringArrayExtra("userInfo");
-        Log.i("DEBUG2", Arrays.toString(userInfo));
+        Log.i("DEBUG (Selector)", Arrays.toString(userInfo));
 
 
         // Calendar view declaration
@@ -117,9 +117,9 @@ public class PacketSelector extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            Log.i("DEBUG", "Awaiting response");
+                            Log.i("DEBUG (Selector)", "Awaiting response");
                             boolean success = jsonResponse.getBoolean("success");
-                            Log.i("DEBUG", jsonResponse.toString());
+                            Log.i("DEBUG (Selector)", jsonResponse.toString());
 
                             if(success) {
                                 Intent intent = new Intent(PacketSelector.this, PSAT2.class);

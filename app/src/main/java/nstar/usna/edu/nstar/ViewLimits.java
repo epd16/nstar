@@ -35,7 +35,7 @@ public class ViewLimits extends AppCompatActivity {
         });
 
         // array of fields for the values
-        final TextView[] fields = {findViewById(R.id.user_field),
+        final TextView[] fields = {findViewById(R.id.user_field), findViewById(R.id.phoneNumber_field),
                 findViewById(R.id.busVoltage_field), findViewById(R.id.busCurrent_field), findViewById(R.id.tempZP_field),
                 findViewById(R.id.tempZone_field), findViewById(R.id.batteryTemp_field)};
 
