@@ -111,7 +111,7 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PacketSelector.this, UserArea.class);
-                intent.putExtra("userInfo", userInfo);
+                intent.putExtra("curUser", userInfo[0]);
                 PacketSelector.this.startActivity(intent);
             }
         });

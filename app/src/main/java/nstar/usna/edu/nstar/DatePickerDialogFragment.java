@@ -1,5 +1,6 @@
 package nstar.usna.edu.nstar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -27,6 +28,7 @@ public class DatePickerDialogFragment extends DialogFragment implements DatePick
                 c.get(Calendar.YEAR),  //set default year
                 c.get(Calendar.MONTH), //set default month
                 c.get(Calendar.DAY_OF_MONTH)); //set default day
+
         return dateDlg;
     }
 
@@ -34,9 +36,8 @@ public class DatePickerDialogFragment extends DialogFragment implements DatePick
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         dateSelected = monthOfYear+1 + "-" + dayOfMonth + "-" + year;
         Log.d("DEBUG", "Date Selected: " + (monthOfYear + 1) + "-" + dayOfMonth + "-" + year);
+        Activity activity = getActivity();
+        ((PacketRange)activity).setDate(dateSelected);
     }
 
-    public String getDateSelected() {
-        return dateSelected;
-    }
 }

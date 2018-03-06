@@ -11,8 +11,9 @@ import android.widget.Button;
 
 public class PacketRange extends AppCompatActivity implements View.OnClickListener {
 
-    Button startDate, endDate, buttonBack, buttonHome;
-    String[] userInfo;
+    private Button startDate, endDate, buttonBack, buttonHome;
+    private String[] userInfo;
+    boolean start = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +44,15 @@ public class PacketRange extends AppCompatActivity implements View.OnClickListen
 
     public void onClick(View view) {
         if(view == startDate) {
+            start = true;
             DatePickerDialogFragment dialog = new DatePickerDialogFragment();
             dialog.show(getFragmentManager(), "DatePickerDialogFragment");
-
         }
 
         if(view == endDate) {
+            start = false;
             DatePickerDialogFragment dialog = new DatePickerDialogFragment();
             dialog.show(getFragmentManager(), "DatePickerDialogFragment");
-            ((Button) view).setText(dialog.getDateSelected());
         }
 
         if(view == buttonBack) {
@@ -67,12 +68,12 @@ public class PacketRange extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    public void setStart(String date) {
-        startDate.setText(date);
-    }
-
-    public void setEnd(String date) {
-        endDate.setText(date);
+    public void setDate(String date) {
+        if(start) {
+            startDate.setText(date);
+        } else {
+            endDate.setText(date);
+        }
     }
 
 }
