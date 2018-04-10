@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nstar.usna.edu.nstar.PacketSelector"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Select Packet Range"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        android:gravity="center" />
+
+    <View
+        android:id="@+id/blocker1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05" />
+
+    <TextView
+        android:id="@+id/startDateText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Select Start Date"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/startDate"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="@drawable/button_default"
+        android:text="Start Date"
+        android:fontFamily="@font/prox_nova_thin"/>
+
+    <TextView
+        android:id="@+id/endDateText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Select End Date"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/endDate"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:background="@drawable/button_default"
+        android:text="End Date"
+        android:fontFamily="@font/prox_nova_thin"/>
+
+    <View
+        android:id="@+id/blocker2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Back"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_options"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="0.5dp" />
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/prox_nova_thin"
+        android:text="Home"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_options"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp" />
+
+
+
+</LinearLayout>
