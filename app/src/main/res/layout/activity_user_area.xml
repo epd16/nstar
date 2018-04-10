@@ -37,8 +37,49 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.45"
+        android:layout_weight="0.35"
         android:src="@drawable/nstar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".10"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonStartCollection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="@string/ua_6"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="@drawable/button_default"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginBottom="0.5dp"
+            android:onClick="runTask"/>
+
+
+        <Button
+            android:id="@+id/buttonStopCollection"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/prox_nova_thin"
+            android:text="@string/ua_7"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="@drawable/button_default"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginBottom="0.5dp"
+            android:onClick="cancelTask"/>
+
+    </LinearLayout>
+
+
 
     <Button
     android:id="@+id/buttonPSAT1"

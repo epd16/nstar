@@ -13,6 +13,8 @@
     <string name="ua_3">"PSAT-2"</string>
     <string name="ua_4">"User Information &amp; Limits"</string>
     <string name="ua_5">"Log Out"</string>
+    <string name="ua_6">"Start"</string>
+    <string name="ua_7">"Stop"</string>
 
     <string name="ps_1">Select Packet Date</string>
 
