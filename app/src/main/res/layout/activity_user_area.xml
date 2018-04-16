@@ -59,7 +59,7 @@
             android:background="@drawable/button_default"
             android:layout_marginTop="0.5dp"
             android:layout_marginBottom="0.5dp"
-            android:onClick="runTask"/>
+            android:onClick="setAlarm"/>
 
 
         <Button
@@ -75,7 +75,7 @@
             android:background="@drawable/button_default"
             android:layout_marginTop="0.5dp"
             android:layout_marginBottom="0.5dp"
-            android:onClick="cancelTask"/>
+            android:onClick="cancelAlarm"/>
 
     </LinearLayout>
 

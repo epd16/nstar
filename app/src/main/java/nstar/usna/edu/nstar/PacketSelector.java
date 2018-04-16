@@ -58,7 +58,6 @@ public class PacketSelector extends AppCompatActivity {
         final Button buttonHome = findViewById(R.id.home_button);
         final Button buttonToday = findViewById(R.id.today_button);
         final Button buttonYesterday = findViewById(R.id.yesterday_button);
-        final Button buttonRange = findViewById(R.id.range_button);
 
         // get current date and time for initialization of buttonSelDate
         String dateString = dateFormatAlt.format(cal.getTime());
@@ -80,16 +79,6 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calView.setDate(cal.getTimeInMillis());
-            }
-        });
-
-        // rangeButton is selected
-        buttonRange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PacketSelector.this, PacketRange.class);
-                intent.putExtra("userInfo", userInfo);
-                PacketSelector.this.startActivity(intent);
             }
         });
 

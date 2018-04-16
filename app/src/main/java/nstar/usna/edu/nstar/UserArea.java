@@ -1,9 +1,18 @@
 package nstar.usna.edu.nstar;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,10 +37,20 @@ import static com.android.volley.toolbox.Volley.newRequestQueue;
 public class UserArea extends AppCompatActivity {
 
     //service task for data pull
-    MyAsyncTask task;
+    //MyAsyncTask task;
 
     // user info array to be passed between intents
-    final String[] userInfo = new String[7];
+    static final String[] userInfo = new String[7];
+    static boolean mark = false;
+    static int field = -1;
+
+    //used with alarm to pull from database
+    AlarmManager alarmManager;
+    Intent alarmIntent;
+    PendingIntent pendingIntent;
+
+    //used for alarm notifications
+    public static int NOTIFICATION_ID = 1775;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +58,6 @@ public class UserArea extends AppCompatActivity {
         setContentView(R.layout.activity_user_area);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
 
 
         // get intent and username
@@ -57,7 +75,6 @@ public class UserArea extends AppCompatActivity {
         //startcollection
         Button buttonStartCollection = findViewById(R.id.buttonStartCollection);
         //startcollection listener
-
 
 
         // listeners
@@ -94,6 +111,7 @@ public class UserArea extends AppCompatActivity {
                 intent.putExtra("userInfo", userInfo);
                 UserArea.this.startActivity(intent);
             }
+
         });
 
 
@@ -110,10 +128,10 @@ public class UserArea extends AppCompatActivity {
                     boolean success = jsonResponse.getBoolean("success");
                     Log.i("DEBUG", jsonResponse.toString());
 
-                    if(success) {
+                    if (success) {
                         // build an array to be passed around with the limits
                         userInfo[0] = requestUsername;
-                        userInfo[1] =jsonResponse.getString("number");
+                        userInfo[1] = jsonResponse.getString("number");
                         userInfo[2] = jsonResponse.getString("BUS_VOLT_LIMIT");
                         userInfo[3] = jsonResponse.getString("BUS_CUR_LIMIT");
                         userInfo[4] = jsonResponse.getString("TEMP_ZP_LIMIT");
@@ -121,7 +139,7 @@ public class UserArea extends AppCompatActivity {
                         userInfo[6] = jsonResponse.getString("BAT_TEMP_LIMIT");
                         Log.i("DEBUG", Arrays.toString(userInfo));
 
-                    }else {
+                    } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(UserArea.this);
                         builder.setMessage("Unable to load options/limits for " + requestUsername)
                                 .setNegativeButton("Ok", null)
@@ -130,166 +148,241 @@ public class UserArea extends AppCompatActivity {
                         Log.i("DEBUG", "No options available");
                     }
 
-                }catch (JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+
+
         };
 
         OptionsRequest optionsRequest = new OptionsRequest(requestUsername, responseListener);
         Log.i("DEBUG", "Sending packet with" + optionsRequest.params);
         RequestQueue queue = newRequestQueue(UserArea.this);
         queue.add(optionsRequest);
+
+        alarmManager = (AlarmManager) getBaseContext()
+                .getSystemService(Context.ALARM_SERVICE);
+        alarmIntent = new Intent(getBaseContext(), AlarmReceiver.class);
+        alarmIntent.putExtra("UI",userInfo);
+        pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, alarmIntent, 0);
+
+
+
+
     }
 
-    //ASYNC TASK WORK BELOW
-    public void runTask(View v) {
-        Log.i("NSTAR", "TASK STARTED");
-        task= new MyAsyncTask();
-        task.execute();
+    public void setAlarm(View view) {
+        //set alarm. 3rd parameter sets interval for data pulls. First trigger 5s after click and every hr until stopped
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime()+5000, 5000, pendingIntent);
+        Log.i("NSTAR", "Alarm set");
     }
 
-    public void cancelTask(View v) {
-        Log.i("NSTAR", "TASK ENDED");
-        task.cancel(true);
+    public void cancelAlarm(View view) {
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
+        Log.i("NSTAR", "Alarm cancelled");
     }
 
-    public class MyAsyncTask extends AsyncTask<String, Integer, Long> {
 
-        Date cDate = new Date();
-        String currentDate = new SimpleDateFormat("yyyyMMdd").format(cDate);
 
+
+    public static class AlarmReceiver extends BroadcastReceiver {
 
         @Override
-        protected void onPreExecute(){
-            // do work in UI thread before doInBackground() runs
-            //outputText.setText("Starting Task...");
+        public void onReceive(Context context, Intent intent) {
+            Log.i("TAG", "Alarm triggered, starting service!!");
+
+            Intent serviceIntent = new Intent(context,
+                    UserArea.ServiceReceivingAlarm.class);
+            context.startService(serviceIntent);
+
         }
 
+    }
+
+
+    public static class ServiceReceivingAlarm extends IntentService {
+
+        public ServiceReceivingAlarm() {
+            super("ServiceRecievingAlarm");
+        }
 
         @Override
-        protected Long doInBackground(String... params) {
-            // do work in background thread
+        protected void onHandleIntent(Intent intent) {
+
+            Log.i("NSTAR", "PULLING DATA!!");
+            Date cDate = new Date();
+            String currentDate = new SimpleDateFormat("yyyyMMdd").format(cDate);
+
+            //PULL DATA*********************************************
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        Log.i("DEBUG (Selector)", "Awaiting response");
+                        boolean success = jsonResponse.getBoolean("success");
+                        Log.i("DEBUG (Selector)", jsonResponse.toString());
+
+                        if (success) {
+                            double busVolt = Double.parseDouble(jsonResponse.getString("BUS_VOLT"));
+                            double busCur = Double.parseDouble(jsonResponse.getString("BUS_CUR"));
+                            double tempZP = Double.parseDouble(jsonResponse.getString("TEMP_ZP"));
+                            double tempZN = Double.parseDouble(jsonResponse.getString("TEMP_ZN"));
+                            double batTemp = Double.parseDouble(jsonResponse.getString("BAT_TEMP"));
+
+                            double[] fields = {busVolt, busCur, tempZP, tempZN, batTemp};
+
+                            Log.i("TESSSST", userInfo[2]);
+                           if (checkLimits(userInfo, fields) == true) {
+                               Log.i("NSTAR ALERT", "OOL");
+                               mark = true;
 
 
-
-            int progress = 0;
-
-            while(true){
-                try {
-                    Thread.sleep(30000); //pause for 100 milliseconds
-
-                    // push updates to UI thread
-                    publishProgress(progress);
-
-                    //PULL DATA*********************************************
-                    Response.Listener<String> responseListener = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonResponse = new JSONObject(response);
-                                Log.i("DEBUG (Selector)", "Awaiting response");
-                                boolean success = jsonResponse.getBoolean("success");
-                                Log.i("DEBUG (Selector)", jsonResponse.toString());
-
-
-                                if(success) {
-                                    double busVolt = Double.parseDouble(jsonResponse.getString("BUS_VOLT"));
-                                    double busCur = Double.parseDouble(jsonResponse.getString("BUS_CUR"));
-                                    double tempZP = Double.parseDouble(jsonResponse.getString("TEMP_ZP"));
-                                    double tempZN = Double.parseDouble(jsonResponse.getString("TEMP_ZN"));
-                                    double batTemp = Double.parseDouble(jsonResponse.getString("BAT_TEMP"));
-
-                                    double[] fields = {busVolt, busCur, tempZP, tempZN, batTemp};
-
-                                    if (checkLimits(userInfo, fields) == true) {
-                                        Log.i("NSTAR ALERT","OOL");
-                                    }
-                                }
-
-                            }catch (JSONException e) {
-                                e.printStackTrace();
                             }
                         }
-                    };
-
-                    PacketRequest packetRequest = new PacketRequest(currentDate, responseListener);
-                    Log.i("DEBUG", "Sending packet with" + packetRequest.params);
-                    RequestQueue queue = newRequestQueue(UserArea.this);
-                    queue.add(packetRequest);
-
-
-
-
-                    //*******************************************************
-
-                    // check to see if the task has been canceled
-                    // using taskName.cancel(bool) from UI thread
-                    // cancel(true) = task is stopped before completion
-                    // cancel(false) = task is allowed to complete
-                    if(isCancelled()){
-                        // handle call to cancel
-                        progress = 100;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-
-                    progress++;
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+
+            };
+
+            PacketRequest packetRequest = new PacketRequest(currentDate, responseListener);
+            Log.i("DEBUG", "Sending packet with" + packetRequest.params);
+            RequestQueue queue = newRequestQueue(this);
+            queue.add(packetRequest);
+            if(mark == true){
+                sendNotification(field);
+                mark = false;
             }
 
+        }
+
+
+        public void sendNotification(int field){
+            Log.i("TEST","made it to sending fnc");
+            Notifier.generateNotification(this, "Title Text",
+                    "Your First Notification", NOTIFICATION_ID,field);
 
         }
 
-        @Override
-        protected void onCancelled (Long result){
-            // executed on UI thread
-            // called instead of onPostExecute() after doInBackground()
-            // is complete if cancel() is called on the AsyncTask
-            //outputText.setText("Task Cancelled");
+        public void clearNotification(){
+            Notifier.cancelNotification(this, NOTIFICATION_ID);
+
         }
 
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-            // update UI thread according to progress,
-            // e.g. update a ProgressBar display
-            //outputText.setText("Progress: " + progress[0]);
-        }
 
-        @Override
-        protected void onPostExecute(Long result) {
-            // do work in UI thread after doInBackground() completes
-            //outputText.setText("Task Result: " + result);
-        }
 
         //CHECK LIMITS************************************************************
         public boolean checkLimits(String[] userInfo, double[] fields) {
             boolean alert = false;
+            Log.i("TEST FROM CHECKLIMITS", userInfo[2]);
             // bus_voltage limit
             if(fields[0] > Double.parseDouble((String)userInfo[2])) {
+                field = 0;
                 alert = true;
             }
             // bus_current limit
             if(fields[1] > Double.parseDouble((String)userInfo[3])) {
+                field = 1;
                 alert = true;
             }
             // temp_zp limit
             if(fields[2] > Double.parseDouble((String)userInfo[4])) {
+                field = 2;
                 alert = true;
             }
             // temp_zn limit
             if(fields[3] > Double.parseDouble((String)userInfo[5])) {
+                field = 3;
                 alert = true;
             }
             // temp_bat limit
             if(fields[4] > Double.parseDouble((String)userInfo[6])) {
+                field = 4;
                 alert = true;
             }
             return alert;
         }
         //*******************************************************************************************
+
+
+    }
+
+
+    public static class Notifier {
+        private final static String TAG = "NSTAR NOTIFICATION";
+
+        public static void generateNotification(Context context, String title,
+                                                String message, int notificationId,int field) {
+            String fieldString = fieldToString(field);
+
+            Log.i("TEST","made it to sending 1");
+            // get instance of notification manager
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationCompat.Builder myBuilder =new NotificationCompat.Builder(context, "IT472Notifications")
+                    .setSmallIcon(R.drawable.nstar)
+                    .setContentTitle("NSTAR Telemetry Alert")
+                    .setContentText("PSAT1: " + fieldString + " out of limits");
+
+            // set notification to cancel itself when selected
+            // as opposed to canceling it manually
+            myBuilder.setAutoCancel(true);
+
+            myBuilder.setTicker("New Telemetry Alert");
+
+            // set to play default notification sound
+            myBuilder.setDefaults(Notification.DEFAULT_SOUND);
+
+            // set to vibrate if vibrate is enabled on device
+            myBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+
+
+
+            notificationManager.notify(notificationId, myBuilder.build());
+
+            Log.i("TEST","made it to sending 2");
+        }
+
+        public static void cancelNotification(Context context, int notificationId) {
+            try{
+                NotificationManager notificationManager = (NotificationManager) context
+                        .getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancel(notificationId);
+            } catch (Exception e) {
+                Log.i(TAG, "cancelNotification() error: " + e.getMessage());
+            }
+        }
+    }
+
+    public static String fieldToString(int field){
+        switch (field){
+            case 0: return "Bus Voltage";
+            case 1: return "Bus Current";
+            case 2: return "Temperature ZP";
+            case 3: return "Temperature ZN";
+            case 4: return "Battery Temperature";
+            case 5: return "Multiple Fields";
+        }
+
+        return null;
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+

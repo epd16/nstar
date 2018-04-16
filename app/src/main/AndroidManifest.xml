@@ -3,7 +3,6 @@
     package="nstar.usna.edu.nstar">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -27,8 +26,19 @@
         <activity android:name=".ViewLimits" />
         <activity android:name="nstar.usna.edu.nstar_v11.view_change" />
         <activity android:name=".ViewChange" />
-        <activity android:name=".ChangeLimits2" />
-        <activity android:name=".PacketRange"></activity>
+        <activity android:name=".ChangeLimits2"></activity>
+
+        <service android:name=".UserArea$ServiceReceivingAlarm"
+            android:exported="false"/>
+
+        <receiver android:name=".UserArea$AlarmReceiver"/>
+
     </application>
+
+
+
+    <uses-permission android:name="android.permission.SEND_SMS">
+
+    </uses-permission>
 
 </manifest>
