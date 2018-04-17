@@ -32,16 +32,17 @@ public class ChangeLimits2 extends AppCompatActivity {
         Intent intent = getIntent();
         final String[] userInfo = intent.getStringArrayExtra("userInfo");
 
-        //final Button buttonHome = findViewById(R.id.buttonSave);
+        // Save button
+        final Button buttonHome = findViewById(R.id.buttonSave);
         // Back button listener
-        //buttonHome.setOnClickListener(new View.OnClickListener() {
-           // @Override
-           // public void onClick(View view) {
-              //  Intent intent = new Intent(ChangeLimits2.this, UserArea.class);
-              //  intent.putExtra("curUser", userInfo[0]);
-              //  ChangeLimits2.this.startActivity(intent);
-           // }
-       // });
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+                Intent intent = new Intent(ChangeLimits2.this, UserArea.class);
+               intent.putExtra("curUser", userInfo[0]);
+                ChangeLimits2.this.startActivity(intent);
+            }
+        });
 
         // array of fields for the values
         final TextView[] fields = {findViewById(R.id.user_field), findViewById(R.id.phoneNumber_field),

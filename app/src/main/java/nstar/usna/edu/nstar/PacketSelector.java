@@ -61,6 +61,8 @@ public class PacketSelector extends AppCompatActivity {
 
         // get current date and time for initialization of buttonSelDate
         String dateString = dateFormatAlt.format(cal.getTime());
+        date = dateFormat.format(calView.getDate());
+        displayDate = dateFormatAlt.format(calView.getDate());
         buttonSelDate.setTextColor(getResources().getColor(R.color.green));
         buttonSelDate.setText(dateString);
 
@@ -86,7 +88,7 @@ public class PacketSelector extends AppCompatActivity {
         calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                month = month + 1;
+                //month = month + 1;
                 date = dateFormat.format(calView.getDate());
                 displayDate = dateFormatAlt.format(calView.getDate());
                 buttonSelDate.setText(displayDate);
@@ -111,7 +113,7 @@ public class PacketSelector extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //final String username = textUser.getText().toString();
-                final String requestDate = date;
+                //final String requestDate = date;
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
