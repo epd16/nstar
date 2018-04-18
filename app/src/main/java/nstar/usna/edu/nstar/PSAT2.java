@@ -26,10 +26,13 @@ public class PSAT2 extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+
         // get intent to populate the values in the telemetry display
         Intent intent = getIntent();
         final String[] userInfo = intent.getStringArrayExtra("userInfo");
-
+        if(userInfo == null) {
+            Log.i("NOTIFICATION TEST: ", "NULL");
+        }
         // values from the JSON in PacketSelector
         String date = intent.getStringExtra("date");
         double recTime = Double.parseDouble(intent.getStringExtra("REC_TIME"));
@@ -43,6 +46,8 @@ public class PSAT2 extends AppCompatActivity {
         double tempZN = Double.parseDouble(intent.getStringExtra("TEMP_ZN"));
         double tempBat = Double.parseDouble(intent.getStringExtra("BAT_TEMP"));
         String digiStatus = intent.getStringExtra("DIGI_STATUS");
+
+        Log.i("NOTIFICATION TEST: ", String.valueOf(tempBat));
 
         // set date as header
         String displayDate = intent.getStringExtra("displayDate");
@@ -112,6 +117,9 @@ public class PSAT2 extends AppCompatActivity {
      */
     public boolean checkLimits(String[] userInfo, Button[] fields) {
         boolean alert = false;
+        Log.i("cl: ", String.valueOf(Double.parseDouble((String)fields[6].getText())));
+        Log.i("cl: ", String.valueOf(Double.parseDouble((String)userInfo[2])));
+
         // bus_voltage limit
         if(Double.parseDouble((String)fields[6].getText()) > Double.parseDouble((String)userInfo[2])) {
             fields[6].setTextColor(getResources().getColor(R.color.red));

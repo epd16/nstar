@@ -319,36 +319,108 @@ public class UserArea extends AppCompatActivity {
     public static class Notifier {
         private final static String TAG = "NSTAR NOTIFICATION";
 
-        public static void generateNotification(Context context, String title,
-                                                String message, int notificationId,int field) {
-            String fieldString = fieldToString(field);
 
-            Log.i("TEST","made it to sending 1");
-            // get instance of notification manager
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            NotificationCompat.Builder myBuilder =new NotificationCompat.Builder(context, "IT472Notifications")
-                    .setSmallIcon(R.drawable.nstar)
-                    .setContentTitle("NSTAR Telemetry Alert")
-                    .setContentText("PSAT1: " + fieldString + " out of limits");
+        public static void generateNotification(final Context context, String title,
+                                                String message, final int notificationId, final int field) {
+            Date cDate = new Date();
+            final String currentDate = new SimpleDateFormat("yyyyMMdd").format(cDate);
+            //NOTIFICATION ACTION
 
-            // set notification to cancel itself when selected
-            // as opposed to canceling it manually
-            myBuilder.setAutoCancel(true);
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        Log.i("DEBUG (Selector)", "Awaiting response");
+                        boolean success = jsonResponse.getBoolean("success");
+                        Log.i("DEBUG (Selector)", jsonResponse.toString());
 
-            myBuilder.setTicker("New Telemetry Alert");
-
-            // set to play default notification sound
-            myBuilder.setDefaults(Notification.DEFAULT_SOUND);
-
-            // set to vibrate if vibrate is enabled on device
-            myBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+                        final Intent notificationIntent;
+                        PendingIntent pendingNotIntent;
+                        String fieldString = fieldToString(field);
 
 
 
-            notificationManager.notify(notificationId, myBuilder.build());
 
-            Log.i("TEST","made it to sending 2");
+
+                        Log.i("TEST","made it to sending 1");
+                        // get instance of notification manager
+                        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                        NotificationCompat.Builder myBuilder =new NotificationCompat.Builder(context, "IT472Notifications")
+                                .setSmallIcon(R.drawable.nstar)
+                                .setContentTitle("NSTAR Telemetry Alert")
+                                .setContentText("PSAT1: " + fieldString + " out of limits");
+
+                        notificationIntent = new Intent(context, PSAT2.class);
+
+                        if(success) {
+
+
+                            // send the variables to the view screen
+                            notificationIntent.putExtra("date", jsonResponse.getString("date"));
+                            notificationIntent.putExtra("REC_SECONDS", jsonResponse.getString("REC_SECONDS"));
+                            notificationIntent.putExtra("REC_TIME", jsonResponse.getString("REC_TIME"));
+                            notificationIntent.putExtra("REC_COUNT", jsonResponse.getString("REC_COUNT"));
+                            notificationIntent.putExtra("HEADER", jsonResponse.getString("HEADER"));
+                            notificationIntent.putExtra("TLM_COUNT", jsonResponse.getString("TLM_COUNT"));
+                            notificationIntent.putExtra("BUS_VOLT", jsonResponse.getString("BUS_VOLT"));
+                            notificationIntent.putExtra("BUS_CUR", jsonResponse.getString("BUS_CUR"));
+                            notificationIntent.putExtra("TEMP_ZP", jsonResponse.getString("TEMP_ZP"));
+                            notificationIntent.putExtra("TEMP_ZN", jsonResponse.getString("TEMP_ZN"));
+                            notificationIntent.putExtra("BAT_TEMP", jsonResponse.getString("BAT_TEMP"));
+                            notificationIntent.putExtra("DIGI_STATUS", jsonResponse.getString("DIGI_STATUS"));
+                            notificationIntent.putExtra("displayDate", currentDate);
+
+                            // userInfo Array
+                            notificationIntent.putExtra("userInfo", userInfo);
+                            Log.i("NOTIFICATION TEST: ", userInfo[0]);
+
+                            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+                                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            pendingNotIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                            myBuilder.setContentIntent(pendingNotIntent);
+
+                            // set notification to cancel itself when selected
+                            // as opposed to canceling it manually
+                            myBuilder.setAutoCancel(true);
+
+                            myBuilder.setTicker("New Telemetry Alert");
+
+                            // set to play default notification sound
+                            myBuilder.setDefaults(Notification.DEFAULT_SOUND);
+
+                            // set to vibrate if vibrate is enabled on device
+                            myBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+
+
+
+                            notificationManager.notify(notificationId, myBuilder.build());
+
+                            Log.i("TEST","made it to sending 2");
+
+                        }
+
+
+
+                    }catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            PacketRequest packetRequest = new PacketRequest(currentDate, responseListener);
+            Log.i("DEBUG", "Sending packet with" + packetRequest.params);
+            RequestQueue queue = newRequestQueue(context.getApplicationContext());
+            queue.add(packetRequest);
+
+            //NOTIFICATION INTENT END BUILD
+
+
         }
+
+
+
+
 
         public static void cancelNotification(Context context, int notificationId) {
             try{
@@ -360,6 +432,7 @@ public class UserArea extends AppCompatActivity {
             }
         }
     }
+
 
     public static String fieldToString(int field){
         switch (field){
