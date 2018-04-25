@@ -35,7 +35,7 @@ public class PSAT2 extends AppCompatActivity {
         }
         // values from the JSON in PacketSelector
         String date = intent.getStringExtra("date");
-        double recTime = Double.parseDouble(intent.getStringExtra("REC_TIME"));
+        int recTime = Integer.parseInt(intent.getStringExtra("REC_TIME"));
         double recSeconds = Double.parseDouble(intent.getStringExtra("REC_SECONDS"));
         double recCount = Double.parseDouble(intent.getStringExtra("REC_COUNT"));
         String header = intent.getStringExtra("HEADER");
@@ -57,7 +57,7 @@ public class PSAT2 extends AppCompatActivity {
 
 
         // put all values in an array for field population
-        String[] values = {Double.toString(recSeconds), Double.toString(recTime), Double.toString(recCount), header, date,
+        String[] values = {Double.toString(recSeconds), Integer.toString(recTime), Double.toString(recCount), header, date,
                 Double.toString(tlmCount), Double.toString(busVolt), Double.toString(busCur), Double.toString(tempZP),
                 Double.toString(tempZN), Double.toString(tempBat), digiStatus};
 

@@ -261,6 +261,9 @@ public class UserArea extends AppCompatActivity {
                 sendNotification(field);
                 mark = false;
             }
+            else{
+                sendNotification(-1);
+            }
 
         }
 
@@ -279,7 +282,7 @@ public class UserArea extends AppCompatActivity {
 
 
 
-        //CHECK LIMITS************************************************************
+        //CHECK LIMITS************************************************************//VOLLLLEYYYYYYYYY
         public boolean checkLimits(String[] userInfo, double[] fields) {
             boolean alert = false;
             Log.i("TEST FROM CHECKLIMITS", userInfo[2]);
@@ -337,7 +340,17 @@ public class UserArea extends AppCompatActivity {
 
                         final Intent notificationIntent;
                         PendingIntent pendingNotIntent;
-                        String fieldString = fieldToString(field);
+
+                        String notificationString, fieldString;
+                        Log.i("FIELD: ", String.valueOf(field));
+                        if(field<0){
+                            notificationString = "PSAT2: new telemetry available. No Error";
+                        }
+                        else{
+                            fieldString = fieldToString(field);
+                            notificationString = "PSAT2: " + fieldString + " out of limits";
+                        }
+
 
 
 
@@ -349,7 +362,7 @@ public class UserArea extends AppCompatActivity {
                         NotificationCompat.Builder myBuilder =new NotificationCompat.Builder(context, "IT472Notifications")
                                 .setSmallIcon(R.drawable.nstar)
                                 .setContentTitle("NSTAR Telemetry Alert")
-                                .setContentText("PSAT1: " + fieldString + " out of limits");
+                                .setContentText(notificationString);
 
                         notificationIntent = new Intent(context, PSAT2.class);
 
